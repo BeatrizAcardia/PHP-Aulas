@@ -1,8 +1,11 @@
 <?php
     
-    $nota1 = 5;
-    $nota2 = 10;
+    $nota1 = 2.75;
+    $nota2 = 11.8;
     $media = ($nota1+$nota2)/2;
+    $media = round($media, 2);
+
+    /*$situacao = ($media >=6) ? "aprovado" : "reprovado";*/
 
     if ($media >= 6){
         $situacao = "Aprovado";
