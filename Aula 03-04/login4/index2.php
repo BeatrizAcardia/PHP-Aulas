@@ -8,9 +8,13 @@
         $senha = $_POST["senha"];
 
         if ((trim($login) != " ") && (trim($senha) != "")){
-            if (($login == "João") && ($senha == "1234")){
+            if (($login == "professor") && ($senha == "1234")){
+                session_start();
+                $_SESSION['login'] = $login;
                 header('Location: professor.php?login='.$login);
-            } else if (($login == "Julio") && ($senha == "5678")){
+            } else if (($login == "aluno") && ($senha == "5678")){
+                session_start();
+                $_SESSION['login'] = $login;
                 header('Location: aluno.php?login='.$login);
             } else {
                 $msg = "Login ou senha inválido(s)!";
