@@ -1,6 +1,6 @@
 <html>
 <body>
-    <form method="post">
+    <form method="post" action="cookie.php">
         Nome: <br>
         <input type="text" name="nome" size=30>
         <br><br>
