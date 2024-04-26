@@ -91,7 +91,7 @@ else if ($_SERVER["REQUEST_METHOD"] === 'POST'){
     <hr>
 
     <div align="right">
-        <a href=""><span class="material"></span></a>
+        <a href="vercarrinho.php"><span class="material"></span></a>
         <span id="qtd"><?=$qtd ?></span><span class="material-symbols-outlined">
 shopping_cart_checkout
 </span>
