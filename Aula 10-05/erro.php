@@ -1,0 +1,1 @@
+<p>Você não está logado. Por favor, faça <a href="index.php">login</a>.</p>
