@@ -90,7 +90,7 @@ body{
 <h2>Cadastrar Aluno</h2>
 <div class="form-container">
 	<p class="title">Cadastro</p>
-	<form class="form" action="" method="post">
+	<form class="form" method="post">
             <div class="input-group" >
                 <label for="ra">RA</label>
                 <input type="text" name="ra" id="ra" placeholder=""  style="width: 87%;">
@@ -118,62 +118,46 @@ body{
             <button class="sign">Cadastrar</button>
 	</form>
 </div>
-
+<br><br>
 </body>
 </html>
 
 <?php
 
      if ($_SERVER["REQUEST_METHOD"] === 'POST') {
-         $login = $_POST["login"];
-         $senha = $_POST["senha"];
+      try{
+        $ra = $_POST["ra"];
+        $nome = $_POST["nome"];
+        $curso = $_POST["curso"];
 
-         //o ideal seria a senha ser criptografada ao cadastrar o usuário no bd, e aí ao validar aqui, usar o mesmo algoritmo de criptografia para a senha informada no form
-         //$senha = crypt($senha, "c0t1lUn1camp");
+        if ((trim($ra) == "") || (trim($nome) == "")) {
+          echo "<span id='warning'>RA e nome são obrigatórios!</span>";
+        } else{
+            include("conexaoBD.php");
 
-        if ( (trim($login) != "") && (trim($senha != "")) ) {
-            try {  
+            //verificando se RA informado já existe no BD para não dar exception
+            $stmt = $pdo->prepare("select * from Alunos where ra = :ra");
+            $stmt->bindParam(':ra', $ra);           
+            $stmt->execute();
 
-                include("conexaoBD.php");
+            $rows = $stmt->rowCount();
 
-                $stmt = $pdo->prepare("select * from usuarios where login = :login and senha = :senha");
-                $stmt->bindParam(':login', $login);    
-                $stmt->bindParam(':senha', $senha);     
-                     
-                $stmt->execute();
-                $rows = $stmt->rowCount();
+            if ($rows <= 0) {
+              $stmt = $pdo->prepare("insert into Alunos (ra, nome, curso) values(:ra, :nome, :curso)");
+              $stmt->bindParam(':ra', $ra);
+              $stmt->bindParam(':nome', $nome);
+              $stmt->bindParam(':curso', $curso);                 
+              $stmt->execute();
 
-                if ($rows > 0) {
-
-                    session_start();
-
-
-                   // $_SESSION['logado'] = true;
-
-                    $dadosusuario = $stmt->fetch(); //pega os dados retornados, criando um array
-                    $tipo = $dadosusuario["perfil"];
-                    if($tipo == "1"){
-                      $_SESSION["logado"] = "DIRETOR";
-                        header("location: diretor.php");
-                    } else if($tipo == "2"){
-                      $_SESSION["logado"] = "PROFESSOR";
-                        header("location: professor.php");
-                    } else if($tipo == "3"){
-                      $_SESSION["logado"] = "ALUNO";
-                        header("location: aluno.php");
-                    }
-                } else {
-                    echo "Login e/ou senha inválido(s)";
-                } 
-                 
-            } catch (PDOException $e) {
-                echo 'Error: ' . $e->getMessage();
+              echo "<span id='success'>Aluno cadastrado com sucesso!</span>";
+            } else{
+              echo "<span id='erro'>O cadastro com esse ra já exite!</span>";
             }
-   
-            $pdo = null;
 
-        } else {
-            echo "Informe o login e a senha!";
         }
-     }     
+      }catch (PDOException $e){
+         echo 'Error: ' . $e ->getMessage();
+      }
+        $pdo = null;
+    }
 ?>
