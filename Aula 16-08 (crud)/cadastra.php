@@ -149,7 +149,8 @@ body{
               $stmt->bindParam(':curso', $curso);                 
               $stmt->execute();
 
-              echo "<span id='success'>Aluno cadastrado com sucesso!</span>";
+              echo "<span id='success'>Aluno cadastrado com sucesso!</span> <br>";
+              echo "<button class='sign' style = 'width: 10%'><a href='consulta.php' style = 'color: rgba(17, 24, 39, 1); '>Consultar</a></button>";
             } else{
               echo "<span id='erro'>O cadastro com esse ra já exite!</span>";
             }
