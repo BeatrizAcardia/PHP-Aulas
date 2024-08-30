@@ -93,17 +93,17 @@ body{
 	<form class="form" method="post">
             <div class="input-group" >
                 <label for="ra">RA</label>
-                <input type="text" name="ra" id="ra" placeholder=""  style="width: 87%;">
+                <input type="text" name="ra" id="ra" placeholder=""  style="width: 87%;" required>
             </div>
             <br>        
             <div class="input-group">
                 <label for="nome">Nome</label>
-                <input type="text" name="nome" id="nome" placeholder=""  style="width: 87%;">
+                <input type="text" name="nome" id="nome" placeholder=""  style="width: 87%;" required>
             </div>
             <br>
             <div class="input-group">
                 <label for="curso">Curso</label>
-                <select name="curso" id="curso">
+                <select name="curso" id="curso" required>
                     <option></option>
                     <option value="Edificações">Edificações</option>
                     <option value="Enfermagem">Enfermagem</option>

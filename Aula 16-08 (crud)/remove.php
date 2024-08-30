@@ -33,10 +33,10 @@ body{
 <?php
             include("conexaoBD.php");
 
-            if(!isset($_GET["raAluno"])){
+            if(!isset($_POST["raAluno"])){
                 echo "Selecione o aluno a ser excluído!";
             } else {
-                $ra = $_GET["raAluno"];
+                $ra = $_POST["raAluno"];
 
                 try{
                     $stmt = $pdo -> prepare('Delete from Alunos where ra = :ra');
