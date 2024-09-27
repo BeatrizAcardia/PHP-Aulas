@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Alunos</title>
+</head>
+<body>
+    <h1>Cadastro de Alunos</h1>
+
+    <form action="controleAlunos.php" method="post">
+        <input type="hidden" name="op" value="save">
+
+        RA:<br>
+        <input type="text" name="ra" id="ra">
+
+        <br><br>
+
+        Nome:<br>
+        <input type="text" name="nome" id="nome">
+
+        <br><br>
+
+        Curso:<br>
+        <input type="text" name="curso" id="curso">
+
+        <br><br>
+
+        <input type="submit" value="Cadastrar">
+    </form>
+</body>
+</html>
