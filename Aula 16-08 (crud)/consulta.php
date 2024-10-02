@@ -146,15 +146,12 @@ body{
               echo "<td>" . $row['ra']. "</td>";
               echo "<td>" . $row['nome']. "</td>";
               echo "<td>" . $row['curso']. "</td>";
-<<<<<<< HEAD
 
               if($row["arquivoFoto"] == null){
                 echo "<td align='center'><img src='perfil.png' style='height: 40px; width:40px;'></td>";
               } else{
                 echo "<td align='center'><img src=" . $row['arquivoFoto']. " style='height: 50px; width:50px; border-radius: 100%;'></td>";
               }
-=======
->>>>>>> bdc76bec4f9cd75a685a99e8b6fbe1a9e516a24a
               
               echo "<td>";
 
