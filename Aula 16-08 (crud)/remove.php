@@ -33,15 +33,25 @@ body{
 <?php
             include("conexaoBD.php");
 
-            if(!isset($_POST["raAluno"])){
+            if(!isset($_GET["raAluno"])){
                 echo "Selecione o aluno a ser excluído!";
             } else {
-                $ra = $_POST["raAluno"];
+                $ra = $_GET["raAluno"];
 
                 try{
-                    $stmt = $pdo -> prepare('Delete from Alunos where ra = :ra');
+                    $stmt = $pdo -> prepare('Select arquivoFoto from Alunos where ra = :ra');
                     $stmt -> bindParam(':ra', $ra);
                     $stmt -> execute();
+                    $row = $stmt->fetch();
+                    $arquivoFoto = $row["arquivoFoto"];
+
+                    $stmt = $pdo->prepare('Delete from Alunos where ra = :ra');
+                    $stmt->bindParam(':ra', $ra);
+                    $stmt->execute();
+
+                    if($arquivoFoto != null){
+                        unlink($arquivoFoto);
+                    }
 
                     echo $stmt -> rowCount(). " aluno de RA $ra removido!";
                 }catch (PDOException $e){

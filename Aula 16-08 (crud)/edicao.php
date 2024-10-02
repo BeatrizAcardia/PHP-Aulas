@@ -21,6 +21,7 @@
             while ($row = $stmt->fetch()){
                 $nome = $row['nome'];
                 $curso = $row['curso'];
+                $foto = $row['aquivoFoto'];
 
                 if($row['curso'] == "Edificações"){
                     $edificacoes = "selected";
@@ -163,6 +164,12 @@ body{
                 </select>
             </div>
                     <br>
+            <div class="input-group">
+              <label for="curso">Foto</label>
+              <img src="<?=$foto?>" alt="" width="50px">
+              <input type="file" name="foto">
+              <br><br>
+            </div>
             <button class="sign" type="submit">Salvar alterações</button>
 	</form>
 </div>

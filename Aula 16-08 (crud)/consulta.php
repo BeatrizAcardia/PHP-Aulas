@@ -131,6 +131,7 @@ body{
                 <th scope='col'>RA</th>
                 <th scope='col'>Nome</th>
                 <th scope='col'>Curso</th>
+                <th scope='col'>Foto</th>
                 <th scope='col' colspan = 3></th>
               </tr>
             </thead>";
@@ -142,6 +143,12 @@ body{
               echo "<td>" . $row['ra']. "</td>";
               echo "<td>" . $row['nome']. "</td>";
               echo "<td>" . $row['curso']. "</td>";
+
+              if($row["arquivoFoto"] == null){
+                echo "<td align='center'><img src='perfil.png' style='height: 40px; width:40px;'></td>";
+              } else{
+                echo "<td align='center'><img src=" . $row['arquivoFoto']. " style='height: 50px; width:50px; border-radius: 100%;'></td>";
+              }
               
               echo "<td>";
 

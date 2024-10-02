@@ -4,12 +4,14 @@
     $ra = $_POST['ra'];
     $novoNome = $_POST['nome'];
     $novoCurso = $_POST['curso'];
+    $novaFoto = $_POST['arquivoFoto'];
 
     try {
-        $stmt = $pdo->prepare('UPDATE Alunos SET nome = :novoNome, curso = :novoCurso WHERE ra = :ra');
+        $stmt = $pdo->prepare('UPDATE Alunos SET nome = :novoNome, curso = :novoCurso, arquivoFoto = :novaFoto WHERE ra = :ra');
         $stmt->bindParam(':novoNome', $novoNome);
         $stmt->bindParam(':novoCurso', $novoCurso);
         $stmt->bindParam(':ra', $ra);
+        $stmt->bindParam(':novaFoto', $uploadFile);
         $stmt->execute();
 
         $resposta = "Os dados do aluno de RA $ra foram alterados!";
