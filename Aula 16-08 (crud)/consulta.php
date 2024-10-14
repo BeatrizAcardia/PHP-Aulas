@@ -131,10 +131,7 @@ body{
                 <th scope='col'>RA</th>
                 <th scope='col'>Nome</th>
                 <th scope='col'>Curso</th>
-<<<<<<< HEAD
                 <th scope='col'>Foto</th>
-=======
->>>>>>> bdc76bec4f9cd75a685a99e8b6fbe1a9e516a24a
                 <th scope='col' colspan = 3></th>
               </tr>
             </thead>";
