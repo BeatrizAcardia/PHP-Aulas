@@ -4,18 +4,33 @@
   $nome = $_POST["nome"];
   $curso = $_POST["curso"];
 
-  echo $ra;
-  echo $nome;
-  echo $curso;
-
-
   $filename = fopen("alunos.txt", 'a+');
 
-  $aluno = "RA: " . $ra . "\nNome: " . $nome . "\nCurso: " . $curso . "\n\n";
+  $aluno["ra"] = $ra;
+  $aluno["nome"] = $nome;
+  $aluno["curso"] = $curso;
 
-  fwrite($filename, $aluno);
+  $json = json_encode($aluno);
+
+  echo json_encode($json);
+
+  fwrite($filename, $json);
 
   fclose($filename);
 
   echo "Cadastro efetuado com sucesso";
+
+  // echo $ra;
+  // echo $nome;
+  // echo $curso;
+
+  // $aluno = "RA: " . $ra . "<br>Nome: " . $nome . "<br>Curso: " . $curso . "\n\n";
+
+  // echo "<hr>";
+
+  // echo "<br>\nAluno: " . $nome;
+
+  // echo "<br>\nRa: " . $ra;
+
+  // echo "<br>\ncurso: " . $curso;
 
